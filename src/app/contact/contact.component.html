@@ -1,0 +1,86 @@
+<!-- 
+    <input type="text" [formControl]="nameCntr">
+    {{nameCntr.value}}
+    <button (click)="updateName()">Change</button> -->
+
+    {{profileForm.value | json}}
+    <form [formGroup]="profileForm" (ngSubmit)="profileForm.valid && onSubmit()">
+        <div class="mb-3 mt-3">
+          <label for="fname" class="form-label">FName:</label>
+          <input type="text" class="form-control" 
+          id="fname" placeholder="Enter first Name" 
+          formControlName="fname"
+          >
+          {{fnameCntr.errors|json}}
+          <div class="alert alert-danger" *ngIf ="fnameCntr.dirty && fnameCntr.invalid">
+            <small *ngIf="fnameCntr.errors?.['required']">Name is required.</small>
+            <small *ngIf="fnameCntr.errors?.['minlength']">
+              Name must be at least 3 characters long.
+            </small>
+            <small *ngIf="fnameCntr.errors?.['forbid']">
+              This name is forbbiden...
+            </small>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="lname" class="form-label">Last Name:</label>
+          <input type="text" class="form-control" 
+          id="lname" placeholder="Enter Last Name" 
+          formControlName="lname"
+          >
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" 
+            id="email" placeholder="Enter email" 
+            formControlName="email">
+          </div>
+          <div class="mb-3">
+            <label for="pwd" class="form-label">Password:</label>
+            <input type="password" class="form-control" 
+            id="pwd" placeholder="Enter password" 
+            formControlName="password">
+          </div>
+          <ng-container formGroupName="address">
+             <h5>Address : </h5>
+             <div class="mb-3">
+              <label for="street" class="form-label">Street : </label>
+              <input type="text" class="form-control" 
+              id="street" placeholder="Enter street" 
+              formControlName="street">
+            </div>
+            <div class="mb-3">
+              <label for="city" class="form-label">City : </label>
+              <input type="text" class="form-control" 
+              id="city" placeholder="Enter city" 
+              formControlName="city">
+            </div>
+            <div class="mb-3">
+              <label for="state" class="form-label">State : </label>
+              <input type="text" class="form-control" 
+              id="state" placeholder="Enter state" 
+              formControlName="state">
+            </div>
+            <div class="mb-3">
+              <label for="zipcode" class="form-label">Zip Code : </label>
+              <input type="text" class="form-control" 
+              id="zipcode" placeholder="Enter zip code" 
+              formControlName="zipcode">
+            </div>
+         </ng-container>
+         <div formArrayName="mobileNumber">
+            <h5>Mobile Number : </h5>
+            <button class="btn btn-success" (click)="addNumber()">Add Number</button>
+            <div class="mb-3" *ngFor="let mobileNumber of mobileNumber.controls; let i=index">
+              <label for="mobileNumber" class="form-label">Mobile Number{{i}} : </label>
+              <input type="text" class="form-control" 
+              id="mobileNumber" placeholder="Enter Mobile Number" 
+              [formControlName]="i">
+            </div>
+         </div>
+
+
+        <button type="submit" class="btn btn-primary" [disabled]="profileForm.invalid">Submit</button>
+        <button type="button" class="btn btn-danger"
+         (click)="updateData()">UpdateForm</button>
+      </form>

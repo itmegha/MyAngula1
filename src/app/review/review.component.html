@@ -1,0 +1,54 @@
+
+<div class="container">
+    {{rev | json}}
+<form #rf="ngForm" (ngSubmit)="rf.valid && onSubmit()">
+  {{rf.valid | json}}
+    <div class="mb-3 mt-3">
+      <label for="author" class="form-label">Author:</label>
+      <input type="text" class="form-control"
+       id="author" placeholder="Enter Author"
+       name="author"
+        [(ngModel)]="rev.author"
+        required
+        #author="ngModel">
+        <div class="alert alert-danger" *ngIf="author.dirty && author.invalid">
+          <strong>Oops!!!</strong> Name is required.
+        </div>
+    </div>
+    {{author.valid}}{{author.dirty}}{{author.touched}}
+   
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" class="form-control" id="email" 
+      placeholder="Enter email"
+      name="email"
+      [(ngModel)]="rev.email"
+      required
+      >
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Rating:</label>
+        <select class="form-select"
+        name="rating"
+         [(ngModel)]="rev.rating" required>
+            <option *ngFor="let r of rating" [value]="r">
+                {{r}}stars
+            </option>
+          </select>
+      </div>
+      <div class="mb-3">
+      <div class="form-group">
+        <label for="comment">Description:</label>
+        <textarea class="form-control" rows="5" id="comment"
+        name="description"
+        [(ngModel)]="rev.description"
+        ></textarea>
+      </div>
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+   
+  </form>
+<br>
+
+<br><br><br>
+</div>

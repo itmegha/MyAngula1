@@ -1,0 +1,39 @@
+
+<!-- <h1 style="color: white; background-color: blueviolet;">{{curr_date | date:"MMM dd, yyyy 'at' hh:mm a"}}</h1> -->
+@for(p of product | slice:0:3; track p){
+    <div appHighlight>  
+      <h5 [routerLink]="['/pdetail',p.id]">read more</h5>
+       <p >{{p.login | lowercase}}</p>
+       <img [src]="p.avatar_url" [alt]="p.login" 
+       [style.height.px]="200">
+       <br>
+       <p>{{p.price | currency:'EUR'}}</p>
+       <a href={{p.html_url}}>GOTO_GITHUB</a>
+       <p appHeighlight>{{p.code | convertToSpace}}</p>
+       <p [title] = "p.des">{{p.des | slice:0:40}}</p>
+       <p>{{p.id}}</p>
+       <p>Rating : {{p.rating}}</p>
+       <app-rating [rating] = "p.rating"
+       (chRating) = "p.rating = $event"
+       ></app-rating>
+       <button class="btn btn-success"
+        (click) = "addToCart($event,p) "
+       >AddToCart</button>
+     
+    </div>
+  
+}
+
+<div class="row mt-4" *ngIf="loading">
+  <div class="col">
+    <div class="spinner-border text-danger"></div>
+  </div>
+</div>
+<div class="alert alert-danger alert-dismissible fade show" *ngIf="err_msg">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <strong>{{err_msg}}</strong> 
+</div>
+
+
+<!-- {{product | json}} -->
+  <!-- (ratingChange) = "p.rating = $event" -->

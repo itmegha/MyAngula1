@@ -1,0 +1,25 @@
+
+
+<div *ngIf = "show; else elseB">
+    <button (click) = "toggle()">LogOut</button>
+</div>
+<ng-template #elseB>
+    <button (click) = "toggle()">LogIn</button>
+</ng-template>
+
+<div *ngIf = "cnt == 0" id="d1">
+    <h1>Heading1</h1>
+</div>
+<div *ngIf = "cnt == 1" id="d2">
+    <h1>Heading2</h1>
+</div>
+<div *ngIf = "cnt == 2" id="d3">
+    <h1>Heading3</h1>
+</div>
+<div *ngIf = "cnt == 3" id="d4">
+    <h1>Heading4</h1>
+</div>
+<button (click) = "inc()">+1</button>
+<button (click) = "dec()">-1</button>
+<button (click) = "res()">reset</button>
+

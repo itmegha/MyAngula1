@@ -1,0 +1,19 @@
+
+<div [style.width.px]="startWidth" class="crop">
+    <div style="width: 80px;">
+
+        <i
+        *ngFor = "let s of star; let i = index" 
+        class="bi bi-star-fill"
+        
+        (click)="onChange(i+1)"></i>
+
+        <!-- <i class="bi bi-star-fill" (click)="onChange(1)"></i>
+        <i class="bi bi-star-fill" (click)="onChange(2)"></i>
+        <i class="bi bi-star-fill" (click)="onChange(3)"></i>
+        <i class="bi bi-star-fill" (click)="onChange(4)"></i>
+        <i class="bi bi-star-fill" (click)="onChange(5)"></i> -->
+    </div>
+</div>
+
+

@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-sm navbar-dark " [class] = "myClass">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="javascript:void(0)">Logo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item" >
+            <a class="nav-link"
+             [routerLink]="['/about']"
+             routerLinkActive="active"
+             >Product</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link"  [routerLink]="['/contact']" 
+            routerLinkActive="active"
+            >Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  [routerLink]="['/galary']"
+            routerLinkActive="active"
+            >Profile</a>
+          </li>
+          <li class="nav-item" style="display: flex;">
+            <button class="nav-link" (click)="chTheme()">Theme</button>
+           
+            <button type="button" class="btn btn-primary position-relative"
+            
+            >
+              <i class="bi bi-cart" style=" color: white;" ></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {{countVal}}
+              </span>
+            </button>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="text" placeholder="Search">
+          <button class="btn btn-primary" type="button">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+<!-- <h1 [style] = "myStyle">Navbar</h1>
+<input type="text" class="form-control" placeholder="enter product to search" 
+[value]="data"
+(input) = "onInput($event)"
+>
+{{data}} -->

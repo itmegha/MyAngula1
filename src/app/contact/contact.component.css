@@ -1,0 +1,6 @@
+.ng-invalid.ng-dirty:not(form):not([formarrayname]){
+    border: 5px solid red;
+}
+.ng-valid.ng-dirty:not(form):not([formarrayname]){
+    border: 5px solid rgb(47, 35, 103);
+}
